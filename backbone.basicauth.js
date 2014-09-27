@@ -70,6 +70,11 @@
       credentials = _.result(model, 'credentials');
     }
 
+    // Check if model's collection has some credentials and use them if any
+    if(credentials == null && model.collection && model.collection.credentials) {
+      credentials = _.result(model.collection, 'credentials');
+    }
+
     if(credentials == null) {
       // Try URL-based.
       // Handle both string and function urls
